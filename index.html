@@ -4,777 +4,411 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>11 - Masunurin Class Website - Home</title>
+    <!-- Tailwind CSS CDN for responsive and modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root {
-            --primary-color: #0056b3;
-            --secondary-color: #007bff;
-            --accent-color: #28a745;
-            --text-color: #333;
-            --light-bg: #f8f9fa;
-            --dark-bg: #e2e6ea;
-            --table-header-bg: #007bff;
-            --table-header-text: #fff;
-            --border-color: #dee2e6;
-            --shadow-light: rgba(0, 0, 0, 0.08);
-            --shadow-medium: rgba(0, 0, 0, 0.15);
-        }
-
+        /* Custom font for a clean, modern look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--light-bg);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
         }
 
-        h1, h2, h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        a:hover {
-            color: var(--primary-color);
-            text-decoration: underline;
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 4px 10px var(--shadow-medium);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 25px;
-        }
-
-        nav .logo h1 {
-            margin: 0;
-            color: white;
-            font-size: 2rem;
-            letter-spacing: 1px;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-links li {
-            margin-left: 25px;
-        }
-
-        .nav-links a {
-            color: white;
-            font-weight: 600;
-            padding: 8px 0;
-            transition: all 0.3s ease;
-            position: relative;
-            font-size: 1.05rem;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 3px;
-            display: block;
-            margin-top: 5px;
-            right: 0;
-            background: var(--accent-color);
-            transition: width 0.3s ease, right 0.3s ease;
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-            left: 0;
-            background: var(--accent-color);
-        }
-
-        .burger {
-            display: none;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .burger div {
-            width: 28px;
-            height: 3px;
-            background-color: white;
-            margin: 6px;
-            transition: all 0.3s ease;
-            border-radius: 2px;
-        }
-
-        main {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-        }
-
-        main section {
-            display: none;
-        }
-
-        main section.active-section {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-        }
-
-        .hero-section {
-            background: linear-gradient(rgba(0, 123, 255, 0.8), rgba(0, 123, 255, 0.8));
-            color: white;
-            text-align: center;
-            padding: 100px 20px;
-            min-height: 450px;
-            align-items: center;
-            justify-content: center;
-            animation: fadeIn 1s ease-out;
-        }
-
+        /* Keyframes for the fade-in animation on section load */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
 
-        .hero-content h2 {
-            font-size: 3rem;
-            margin-bottom: 25px;
-            color: white;
-            text-shadow: 2px 2px 4px var(--shadow-medium);
-        }
-
-        .hero-content p {
-            font-size: 1.25rem;
-            max-width: 900px;
-            margin: 0 auto 35px auto;
-        }
-
-        .school-logo, .deped-logo {
-            max-height: 90px;
-            margin: 15px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px var(--shadow-light);
-            transition: transform 0.3s ease;
-        }
-
-        .school-logo:hover, .deped-logo:hover {
-            transform: scale(1.05);
-        }
-
-        .content-section {
-            max-width: 1200px;
-            margin: 50px auto;
-            padding: 30px;
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px var(--shadow-medium);
-        }
-
-        .content-section h2 {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 2.5rem;
-            color: var(--primary-color);
-        }
-
-        .teacher-info {
-            text-align: center;
-            margin-bottom: 35px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: var(--text-color);
-        }
-
-        .student-lists {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            gap: 30px;
-        }
-
-        .student-list {
-            flex: 1 1 45%;
-            min-width: 320px;
-            background-color: var(--dark-bg);
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .student-list:hover {
-            transform: translateY(-5px);
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.12);
-        }
-
-        .student-list ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .student-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border-color);
-            transition: background-color 0.2s ease;
-        }
-
-        .student-list li:last-child {
-            border-bottom: none;
-        }
-
-        .student-list li:hover {
-            background-color: rgba(0, 123, 255, 0.1);
-            border-radius: 4px;
-        }
-
-        .schedule-table {
-            overflow-x: auto;
-            margin-top: 20px;
-        }
-
-        .schedule-table table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-            min-width: 600px;
-        }
-
-        .schedule-table th, .schedule-table td {
-            border: 1px solid var(--border-color);
-            padding: 12px 15px;
-            text-align: left;
-        }
-
-        .schedule-table thead th {
-            background-color: var(--table-header-bg);
-            color: var(--table-header-text);
-            font-weight: bold;
-        }
-
-        .schedule-table tbody tr:nth-child(even) {
-            background-color: var(--dark-bg);
-        }
-
-        .schedule-table tbody tr:hover {
-            background-color: #e9ecef;
-        }
-
-        .contact-info {
-            text-align: center;
-            margin-top: 50px;
-            padding-bottom: 20px;
-        }
-
-        .contact-info h3 {
-            margin-bottom: 20px;
-            color: var(--primary-color);
-            font-size: 1.8rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 25px;
-        }
-
-        .social-button {
-            display: inline-block;
-            padding: 12px 25px;
-            color: white;
-            border-radius: 8px;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-
-        .social-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-            text-decoration: none;
-        }
-
-        .social-button.instagram {
-            background-image: linear-gradient(to right top, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-        }
-        .social-button.facebook {
-            background-color: #3b5998;
-        }
-        .social-button.discord {
-            background-color: #7289da;
-        }
-
-        footer {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 25px 0;
-            margin-top: auto;
-            box-shadow: 0 -4px 10px var(--shadow-medium);
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                right: 0;
-                top: 70px;
-                height: calc(100vh - 70px);
-                background-color: var(--primary-color);
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                width: 70%;
-                max-width: 300px;
-                transform: translateX(100%);
-                transition: transform 0.5s ease-in;
-                z-index: 999;
-                padding-top: 20px;
-            }
-
-            .nav-links li {
+        /* Keyframes for the navigation link animation on mobile toggle */
+        @keyframes navLinkFade {
+            from {
                 opacity: 0;
-                margin: 25px 0;
+                transform: translateX(50px);
             }
-
-            .nav-links.nav-active {
-                transform: translateX(0%);
-            }
-
-            .nav-links.nav-active li {
+            to {
                 opacity: 1;
-                animation: navLinkFade 0.5s ease forwards;
-            }
-
-            .burger {
-                display: block;
-            }
-
-            .burger.toggle .line1 {
-                transform: rotate(-45deg) translate(-5px, 6px);
-            }
-            .burger.toggle .line2 {
-                opacity: 0;
-            }
-            .burger.toggle .line3 {
-                transform: rotate(45deg) translate(-5px, -6px);
-            }
-
-            .hero-content h2 {
-                font-size: 2.5rem;
-            }
-
-            .hero-content p {
-                font-size: 1.1rem;
-            }
-
-            .student-lists {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .student-list {
-                flex: 1 1 90%;
-                min-width: unset;
-                width: 100%;
-            }
-
-            .schedule-table table {
-                min-width: 550px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav .logo h1 {
-                font-size: 1.6rem;
-            }
-
-            .hero-content h2 {
-                font-size: 2rem;
-            }
-
-            .hero-content p {
-                font-size: 1rem;
-            }
-
-            .school-logo, .deped-logo {
-                max-height: 70px;
-                margin: 10px;
-            }
-
-            .content-section {
-                margin: 30px auto;
-                padding: 20px;
-            }
-
-            .content-section h2 {
-                font-size: 2rem;
-                margin-bottom: 30px;
-            }
-
-            .teacher-info {
-                font-size: 1.1rem;
-            }
-
-            .student-list {
-                padding: 18px;
-            }
-
-            .schedule-table th, .schedule-table td {
-                padding: 10px 12px;
-                font-size: 0.9rem;
-            }
-
-            .schedule-table table {
-                min-width: 400px;
-            }
-
-            .social-button {
-                padding: 10px 20px;
-                font-size: 0.9rem;
+                transform: translateX(0px);
             }
         }
     </style>
 </head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">
-                <h1>11 - Masunurin</h1>
+<body class="bg-white text-gray-800 flex flex-col min-h-screen">
+    <!-- Header section with navigation bar -->
+    <header class="bg-blue-700 text-white py-4 shadow-lg sticky top-0 z-50">
+        <nav class="flex justify-between items-center max-w-7xl mx-auto px-6">
+            <!-- Logo/Site Title -->
+            <div class="flex-shrink-0">
+                <h1 class="text-3xl font-extrabold tracking-wide">11 - Masunurin</h1>
             </div>
-            <ul class="nav-links">
-                <li><a href="#home-content" data-section="home-content" class="active">Home</a></li>
-                <li><a href="#students-content" data-section="students-content">Students</a></li>
-                <li><a href="#class-schedule-content" data-section="class-schedule-content">Class Schedule</a></li>
-                <li><a href="#cleaner-schedule-content" data-section="cleaner-schedule-content">Cleaner's Schedule</a></li>
-                <li><a href="#about-content" data-section="about-content">About</a></li>
+            <!-- Navigation Links for Desktop -->
+            <ul class="nav-links hidden md:flex space-x-8">
+                <li><a href="#home-content" data-section="home-content" class="nav-item text-lg font-semibold hover:text-blue-200 transition duration-300 relative">Home</a></li>
+                <li><a href="#students-content" data-section="students-content" class="nav-item text-lg font-semibold hover:text-blue-200 transition duration-300 relative">Students</a></li>
+                <li><a href="#class-schedule-content" data-section="class-schedule-content" class="nav-item text-lg font-semibold hover:text-blue-200 transition duration-300 relative">Class Schedule</a></li>
+                <li><a href="#cleaner-schedule-content" data-section="cleaner-schedule-content" class="nav-item text-lg font-semibold hover:text-blue-200 transition duration-300 relative">Cleaner's Schedule</a></li>
+                <li><a href="#about-content" data-section="about-content" class="nav-item text-lg font-semibold hover:text-blue-200 transition duration-300 relative">About</a></li>
             </ul>
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
+            <!-- Burger Menu Icon for Mobile -->
+            <div class="burger md:hidden cursor-pointer p-2 space-y-1">
+                <div class="line1 w-7 h-0.5 bg-white rounded transition duration-300"></div>
+                <div class="line2 w-7 h-0.5 bg-white rounded transition duration-300"></div>
+                <div class="line3 w-7 h-0.5 bg-white rounded transition duration-300"></div>
             </div>
+            <!-- Mobile Navigation Menu (hidden by default) -->
+            <ul class="nav-links-mobile fixed top-16 right-0 h-screen bg-blue-700 w-3/4 max-w-xs flex flex-col items-center pt-8 transform translate-x-full transition-transform duration-500 ease-in-out md:hidden z-40">
+                <li><a href="#home-content" data-section="home-content" class="nav-item-mobile text-white text-xl font-semibold my-4 block transition duration-300 hover:text-blue-200">Home</a></li>
+                <li><a href="#students-content" data-section="students-content" class="nav-item-mobile text-white text-xl font-semibold my-4 block transition duration-300 hover:text-blue-200">Students</a></li>
+                <li><a href="#class-schedule-content" data-section="class-schedule-content" class="nav-item-mobile text-white text-xl font-semibold my-4 block transition duration-300 hover:text-blue-200">Class Schedule</a></li>
+                <li><a href="#cleaner-schedule-content" data-section="cleaner-schedule-content" class="nav-item-mobile text-white text-xl font-semibold my-4 block transition duration-300 hover:text-blue-200">Cleaner's Schedule</a></li>
+                <li><a href="#about-content" data-section="about-content" class="nav-item-mobile text-white text-xl font-semibold my-4 block transition duration-300 hover:text-blue-200">About</a></li>
+            </ul>
         </nav>
     </header>
 
-    <main>
-        <section id="home-content" class="hero-section active-section">
-            <div class="hero-content">
-                <h2>Welcome, 11 - Masunurin!</h2>
-                <p>Hello! This is a website made by <strong>Marco Antonio Prepotente</strong> for the section <strong>11 - Masunurin</strong> of Liqao National High School. Our aim is to foster organization, collaboration, and easy access to important class information. We hope this platform helps us stay connected and updated throughout the school year. Let's make this year productive and harmonious!</p>
-                <p><strong>Class Adviser: Ms. Kristel P. Pied</strong></p>
-                <img src="https://raw.githubusercontent.com/marco-prepotente/Images/main/lnhs.jpg" alt="School Logo" class="school-logo">
-                <img src="https://raw.githubusercontent.com/marco-prepotente/Images/main/deped.jpg" alt="DepEd Logo" class="deped-logo">
+    <!-- Main content area, structured with hidden/shown sections -->
+    <main class="flex-grow flex flex-col w-full">
+        <!-- Home Section -->
+        <section id="home-content" class="hero-section hidden flex-col items-center justify-center bg-blue-600 text-white text-center py-20 px-4 min-h-[450px] animate-fadeIn">
+            <div class="max-w-4xl">
+                <h2 class="text-5xl font-bold mb-6 text-white drop-shadow-lg">Welcome, 11 - Masunurin!</h2>
+                <p class="text-xl leading-relaxed mb-8">Hello! This is a website made by <strong class="font-bold">Marco Antonio Prepotente</strong> for the section <strong class="font-bold">11 - Masunurin</strong> of Liqao National High School. Our aim is to foster organization, collaboration, and easy access to important class information. We hope this platform helps us stay connected and updated throughout the school year. Let's make this year productive and harmonious!</p>
+                <p class="text-2xl font-bold mb-4">Class Adviser: Ms. Kristel P. Pied</p>
+                <div class="flex flex-wrap justify-center items-center mt-8">
+                    <img src="https://raw.githubusercontent.com/marco-prepotente/Images/main/lnhs.jpg" alt="School Logo" class="w-24 h-24 object-contain mx-4 my-2 rounded-lg shadow-md transition-transform duration-300 hover:scale-105">
+                    <img src="https://raw.githubusercontent.com/marco-prepotente/Images/main/deped.jpg" alt="DepEd Logo" class="w-24 h-24 object-contain mx-4 my-2 rounded-lg shadow-md transition-transform duration-300 hover:scale-105">
+                </div>
             </div>
         </section>
 
-        <section id="students-content" class="content-section">
-            <h2>Our Students</h2>
-            <div class="teacher-info">
+        <!-- Students Section -->
+        <section id="students-content" class="content-section hidden flex-col max-w-7xl mx-auto my-12 p-8 bg-white rounded-xl shadow-2xl">
+            <h2 class="text-4xl font-bold text-center mb-10 text-blue-700">Our Students</h2>
+            <div class="text-center mb-8 text-2xl font-semibold text-gray-700">
                 <h3>Class Adviser: Ms. Kristel P. Pied</h3>
             </div>
-            <div class="student-lists">
-                <div class="student-list male-students">
-                    <h3>Male Students (13)</h3>
-                    <ul>
-                        <li>1. BASAGRE, LANCE CHRISTOPHER S.</li>
-                        <li>2. BITANGCOR, HARVEY M.</li>
-                        <li>3. BOY, RODIL, JR. P.</li>
-                        <li>4. DACER, JOHN CARLOS P.</li>
-                        <li>5. JARATA, JOHN LLOYD P.</li>
-                        <li>6. MANGENTE, NATHANIEL P.</li>
-                        <li>7. MARELLA, ZOREN P.</li>
-                        <li>8. MORALEDA, BRIAN AXEL P.</li>
-                        <li>9. ORTIZ, RYAN M.</li>
-                        <li>10. PREPOTENTE, MARCO ANTONIO A.</li>
-                        <li>11. RAMOS, GIAN P.</li>
-                        <li>12. REBUYA, JOSEPH C.</li>
-                        <li>13. SURBANO, JOSE EMMANUEL C.</li>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                <!-- Male Students List -->
+                <div class="student-list bg-blue-50 p-6 rounded-xl shadow-inner transition-transform duration-300 hover:translate-y-[-8px] hover:shadow-lg">
+                    <h3 class="text-3xl font-bold mb-6 text-blue-700">Male Students (13)</h3>
+                    <ul class="list-none p-0 m-0 space-y-3 text-lg">
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">1. BASAGRE, LANCE CHRISTOPHER S.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">2. BITANGCOR, HARVEY M.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">3. BOY, RODIL, JR. P.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">4. DACER, JOHN CARLOS P.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">5. JARATA, JOHN LLOYD P.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">6. MANGENTE, NATHANIEL P.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">7. MARELLA, ZOREN P.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">8. MORALEDA, BRIAN AXEL P.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">9. ORTIZ, RYAN M.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">10. PREPOTENTE, MARCO ANTONIO A.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">11. RAMOS, GIAN P.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">12. REBUYA, JOSEPH C.</li>
+                        <li class="py-2 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">13. SURBANO, JOSE EMMANUEL C.</li>
                     </ul>
                 </div>
-                <div class="student-list female-students">
-                    <h3>Female Students (24)</h3>
-                    <ul>
-                        <li>1. ABRANTES, NICOLE DOMINIQUE C.</li>
-                        <li>2. ALDAVE, NICA A.</li>
-                        <li>3. BALMEDINA, JC KRISNAJE D.</li>
-                        <li>4. BANGLATE, JANE P.</li>
-                        <li>5. BOGIA, ABIGAILE KATE P.</li>
-                        <li>6. BUBAN, KISHA MAE P.</li>
-                        <li>7. DE LOS SANTOS, MARIA YSABEL P.</li>
-                        <li>8. DIVINAGFLOR, ANGIE P.</li>
-                        <li>9. DOLOM, DESIREE JOY G.</li>
-                        <li>10. ENCINAS, SHYRA KRISTELLE R.</li>
-                        <li>11. EVARISTO, ISABEL P.</li>
-                        <li>12. MAGOJA, KAI LEAH ANNE B.</li>
-                        <li>13. MANGATA, ELROSE G.V.</li>
-                        <li>14. MATIAS, GEORBETH GRACE A.</li>
-                        <li>15. MOLIJIC, JAMAICA MARIE R.</li>
-                        <li>16. MORATA, RIKY R.</li>
-                        <li>17. PERDIGONES, DEXSHIELANE P.</li>
-                        <li>18. PILLE, ABIGAIL G.</li>
-                        <li>19. PRINCESA, MA. VEDA JOY T.</li>
-                        <li>20. QUIDEP, JINAH O.</li>
-                        <li>21. RABE, SOPHIA FRANCE R.</li>
-                        <li>22. RACADAG, ANTONETTE G.</li>
-                        <li>23. SONGQUIA, NICOLE M.</li>
-                        <li>24. VERMILO, MICHELLE KAYLY M.</li>
+                <!-- Female Students List -->
+                <div class="student-list bg-blue-50 p-6 rounded-xl shadow-inner transition-transform duration-300 hover:translate-y-[-8px] hover:shadow-lg">
+                    <h3 class="text-3xl font-bold mb-6 text-blue-700">Female Students (24)</h3>
+                    <ul class="list-none p-0 m-0 space-y-3 text-lg">
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">1. ABRANTES, NICOLE DOMINIQUE C.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">2. ALDAVE, NICA A.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">3. BALMEDINA, JC KRISNAJE D.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">4. BANGLATE, JANE P.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">5. BOGIA, ABIGAILE KATE P.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">6. BUBAN, KISHA MAE P.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">7. DE LOS SANTOS, MARIA YSABEL P.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">8. DIVINAGFLOR, ANGIE P.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">9. DOLOM, DESIREE JOY G.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">10. ENCINAS, SHYRA KRISTELLE R.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">11. EVARISTO, ISABEL P.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">12. MAGOJA, KAI LEAH ANNE B.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">13. MANGATA, ELROSE G.V.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">14. MATIAS, GEORBETH GRACE A.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">15. MOLIJIC, JAMAICA MARIE R.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">16. MORATA, RIKY R.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">17. PERDIGONES, DEXSHIELANE P.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">18. PILLE, ABIGAIL G.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">19. PRINCESA, MA. VEDA JOY T.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">20. QUIDEP, JINAH O.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">21. RABE, SOPHIA FRANCE R.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">22. RACADAG, ANTONETTE G.</li>
+                        <li class="py-2 border-b border-blue-200 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">23. SONGQUIA, NICOLE M.</li>
+                        <li class="py-2 transition-colors duration-200 hover:bg-blue-100 rounded-md px-2">24. VERMILO, MICHELLE KAYLY M.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <section id="class-schedule-content" class="content-section">
-            <h2>Class Schedule</h2>
-            <h3>Monday to Thursday (Normal Schedule)</h3>
-            <div class="schedule-table">
-                <table>
+        <!-- Class Schedule Section -->
+        <section id="class-schedule-content" class="content-section hidden flex-col max-w-7xl mx-auto my-12 p-8 bg-white rounded-xl shadow-2xl">
+            <h2 class="text-4xl font-bold text-center mb-10 text-blue-700">Class Schedule</h2>
+            <!-- Monday to Thursday Schedule -->
+            <h3 class="text-2xl font-bold mb-6 text-gray-700">Monday to Thursday (Normal Schedule)</h3>
+            <div class="overflow-x-auto rounded-lg shadow-md mb-10">
+                <table class="w-full border-collapse min-w-[600px] text-lg">
                     <thead>
-                        <tr>
-                            <th>Time</th>
-                            <th>Subject Name</th>
-                            <th>Teacher Name</th>
+                        <tr class="bg-blue-600 text-white">
+                            <th class="py-3 px-4 text-left border-r border-blue-500">Time</th>
+                            <th class="py-3 px-4 text-left border-r border-blue-500">Subject Name</th>
+                            <th class="py-3 px-4 text-left">Teacher Name</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>6:05 - 7:05 am</td>
-                            <td>Life & Career Skills</td>
-                            <td>Ms. Kristel P. Pied</td>
+                        <tr class="even:bg-blue-50 odd:bg-white hover:bg-blue-100 transition-colors duration-200">
+                            <td class="py-3 px-4 border border-blue-200">6:05 - 7:05 am</td>
+                            <td class="py-3 px-4 border border-blue-200">Life & Career Skills</td>
+                            <td class="py-3 px-4 border border-blue-200">Ms. Kristel P. Pied</td>
                         </tr>
-                        <tr>
-                            <td>7:06 - 8:06 am</td>
-                            <td>Gen Math</td>
-                            <td>Mr. Winard Pobocan</td>
+                        <tr class="even:bg-blue-50 odd:bg-white hover:bg-blue-100 transition-colors duration-200">
+                            <td class="py-3 px-4 border border-blue-200">7:06 - 8:06 am</td>
+                            <td class="py-3 px-4 border border-blue-200">Gen Math</td>
+                            <td class="py-3 px-4 border border-blue-200">Mr. Winard Pobocan</td>
                         </tr>
-                        <tr>
-                            <td>8:07 - 9:07 am</td>
-                            <td>Filipino (Mon & Tue) / English (Wed & Thu)</td>
-                            <td>(Filipino Teacher Name) / (English Teacher Name)</td>
+                        <tr class="even:bg-blue-50 odd:bg-white hover:bg-blue-100 transition-colors duration-200">
+                            <td class="py-3 px-4 border border-blue-200">8:07 - 9:07 am</td>
+                            <td class="py-3 px-4 border border-blue-200">Filipino (Mon & Tue) / English (Wed & Thu)</td>
+                            <td class="py-3 px-4 border border-blue-200">(Filipino Teacher Name) / (English Teacher Name)</td>
                         </tr>
-                        <tr>
-                            <td>9:07 - 9:22 am</td>
-                            <td>Lunch Break</td>
-                            <td>None</td>
+                        <tr class="even:bg-blue-50 odd:bg-white hover:bg-blue-100 transition-colors duration-200 font-semibold text-gray-600">
+                            <td class="py-3 px-4 border border-blue-200">9:07 - 9:22 am</td>
+                            <td class="py-3 px-4 border border-blue-200" colspan="2">Lunch Break</td>
                         </tr>
-                        <tr>
-                            <td>9:22 - 10:22 am</td>
-                            <td>Leadership and Management in the Arts</td>
-                            <td>Mr. Mike Boribor</td>
+                        <tr class="even:bg-blue-50 odd:bg-white hover:bg-blue-100 transition-colors duration-200">
+                            <td class="py-3 px-4 border border-blue-200">9:22 - 10:22 am</td>
+                            <td class="py-3 px-4 border border-blue-200">Leadership and Management in the Arts</td>
+                            <td class="py-3 px-4 border border-blue-200">Mr. Mike Boribor</td>
                         </tr>
-                        <tr>
-                            <td>10:23 - 11:23 am</td>
-                            <td>Gen Science</td>
-                            <td>Ms. Mirasol Mascarinas</td>
+                        <tr class="even:bg-blue-50 odd:bg-white hover:bg-blue-100 transition-colors duration-200">
+                            <td class="py-3 px-4 border border-blue-200">10:23 - 11:23 am</td>
+                            <td class="py-3 px-4 border border-blue-200">Gen Science</td>
+                            <td class="py-3 px-4 border border-blue-200">Ms. Mirasol Mascarinas</td>
                         </tr>
-                        <tr>
-                            <td>11:24 - 12:24 pm</td>
-                            <td>History/Kasaysayan</td>
-                            <td>Ms. Elisa T. Moratillo</td>
+                        <tr class="even:bg-blue-50 odd:bg-white hover:bg-blue-100 transition-colors duration-200">
+                            <td class="py-3 px-4 border border-blue-200">11:24 - 12:24 pm</td>
+                            <td class="py-3 px-4 border border-blue-200">History/Kasaysayan</td>
+                            <td class="py-3 px-4 border border-blue-200">Ms. Elisa T. Moratillo</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <h3>Friday (Special Schedule)</h3>
-            <div class="schedule-table">
-                <table>
+            <!-- Friday Schedule -->
+            <h3 class="text-2xl font-bold mb-6 text-gray-700">Friday (Special Schedule)</h3>
+            <div class="overflow-x-auto rounded-lg shadow-md">
+                <table class="w-full border-collapse min-w-[600px] text-lg">
                     <thead>
-                        <tr>
-                            <th>Time</th>
-                            <th>Subject Name</th>
-                            <th>Teacher Name</th>
+                        <tr class="bg-blue-600 text-white">
+                            <th class="py-3 px-4 text-left border-r border-blue-500">Time</th>
+                            <th class="py-3 px-4 text-left border-r border-blue-500">Subject Name</th>
+                            <th class="py-3 px-4 text-left">Teacher Name</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>6:05 - 7:05 am</td>
-                            <td>Homeroom Guidance</td>
-                            <td>Ms. Kristel P. Pied</td>
+                        <tr class="even:bg-blue-50 odd:bg-white hover:bg-blue-100 transition-colors duration-200">
+                            <td class="py-3 px-4 border border-blue-200">6:05 - 7:05 am</td>
+                            <td class="py-3 px-4 border border-blue-200">Homeroom Guidance</td>
+                            <td class="py-3 px-4 border border-blue-200">Ms. Kristel P. Pied</td>
                         </tr>
-                        <tr>
-                            <td>7:06 - 11:10 am</td>
-                            <td>Elective 2</td>
-                            <td>???</td>
+                        <tr class="even:bg-blue-50 odd:bg-white hover:bg-blue-100 transition-colors duration-200">
+                            <td class="py-3 px-4 border border-blue-200">7:06 - 11:10 am</td>
+                            <td class="py-3 px-4 border border-blue-200">Elective 2</td>
+                            <td class="py-3 px-4 border border-blue-200">???</td>
                         </tr>
-                        <tr>
-                            <td>11:10 - 11:24 am</td>
-                            <td>Lunchbreak</td>
-                            <td>None</td>
+                        <tr class="even:bg-blue-50 odd:bg-white hover:bg-blue-100 transition-colors duration-200 font-semibold text-gray-600">
+                            <td class="py-3 px-4 border border-blue-200">11:10 - 11:24 am</td>
+                            <td class="py-3 px-4 border border-blue-200" colspan="2">Lunchbreak</td>
                         </tr>
-                        <tr>
-                            <td>11:24 - 12:24 pm</td>
-                            <td>Self Learning</td>
-                            <td>Yourself</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <section id="cleaner-schedule-content" class="content-section">
-            <h2>Classroom Cleaner Schedule</h2>
-            <div class="schedule-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>DAY</th>
-                            <th>GROUP 1 (CR)</th>
-                            <th>GROUP 2 (STAIRS)</th>
-                            <th>GROUP 3 (CLASSROOM)</th>
-                            <th>GROUP 4 (CORRIDOR)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Monday</td>
-                            <td>Row 1</td>
-                            <td>Row 1</td>
-                            <td>Row 1</td>
-                            <td>Row 1</td>
-                        </tr>
-                        <tr>
-                            <td>Tuesday</td>
-                            <td>Row 2</td>
-                            <td>Row 2</td>
-                            <td>Row 2</td>
-                            <td>Row 2</td>
-                        </tr>
-                        <tr>
-                            <td>Wednesday</td>
-                            <td>Row 3</td>
-                            <td>Row 3</td>
-                            <td>Row 3</td>
-                            <td>Row 3</td>
-                        </tr>
-                        <tr>
-                            <td>Thursday</td>
-                            <td>Row 4</td>
-                            <td>Row 4</td>
-                            <td>Row 4</td>
-                            <td>Row 4</td>
-                        </tr>
-                        <tr>
-                            <td>Friday</td>
-                            <td>Everyone</td>
-                            <td>Everyone</td>
-                            <td>Everyone</td>
-                            <td>Everyone</td>
+                        <tr class="even:bg-blue-50 odd:bg-white hover:bg-blue-100 transition-colors duration-200">
+                            <td class="py-3 px-4 border border-blue-200">11:24 - 12:24 pm</td>
+                            <td class="py-3 px-4 border border-blue-200">Self Learning</td>
+                            <td class="py-3 px-4 border border-blue-200">Yourself</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <section id="about-content" class="content-section">
-            <h2>About Our Class</h2>
-            <p>11 - Masunurin is a vibrant and enthusiastic class at Liqao National High School. We believe in mutual respect, active participation, and striving for academic excellence. This platform is a testament to our commitment to a well-organized and collaborative learning environment.</p>
-            <div class="teacher-info">
+        <!-- Cleaner Schedule Section -->
+        <section id="cleaner-schedule-content" class="content-section hidden flex-col max-w-7xl mx-auto my-12 p-8 bg-white rounded-xl shadow-2xl">
+            <h2 class="text-4xl font-bold text-center mb-10 text-blue-700">Classroom Cleaner Schedule</h2>
+            <div class="overflow-x-auto rounded-lg shadow-md">
+                <table class="w-full border-collapse min-w-[600px] text-lg">
+                    <thead>
+                        <tr class="bg-blue-600 text-white">
+                            <th class="py-3 px-4 text-left border-r border-blue-500">DAY</th>
+                            <th class="py-3 px-4 text-left border-r border-blue-500">GROUP 1 (CR)</th>
+                            <th class="py-3 px-4 text-left border-r border-blue-500">GROUP 2 (STAIRS)</th>
+                            <th class="py-3 px-4 text-left border-r border-blue-500">GROUP 3 (CLASSROOM)</th>
+                            <th class="py-3 px-4 text-left">GROUP 4 (CORRIDOR)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="even:bg-blue-50 odd:bg-white hover:bg-blue-100 transition-colors duration-200">
+                            <td class="py-3 px-4 border border-blue-200">Monday</td>
+                            <td class="py-3 px-4 border border-blue-200">Row 1</td>
+                            <td class="py-3 px-4 border border-blue-200">Row 1</td>
+                            <td class="py-3 px-4 border border-blue-200">Row 1</td>
+                            <td class="py-3 px-4 border border-blue-200">Row 1</td>
+                        </tr>
+                        <tr class="even:bg-blue-50 odd:bg-white hover:bg-blue-100 transition-colors duration-200">
+                            <td class="py-3 px-4 border border-blue-200">Tuesday</td>
+                            <td class="py-3 px-4 border border-blue-200">Row 2</td>
+                            <td class="py-3 px-4 border border-blue-200">Row 2</td>
+                            <td class="py-3 px-4 border border-blue-200">Row 2</td>
+                            <td class="py-3 px-4 border border-blue-200">Row 2</td>
+                        </tr>
+                        <tr class="even:bg-blue-50 odd:bg-white hover:bg-blue-100 transition-colors duration-200">
+                            <td class="py-3 px-4 border border-blue-200">Wednesday</td>
+                            <td class="py-3 px-4 border border-blue-200">Row 3</td>
+                            <td class="py-3 px-4 border border-blue-200">Row 3</td>
+                            <td class="py-3 px-4 border border-blue-200">Row 3</td>
+                            <td class="py-3 px-4 border border-blue-200">Row 3</td>
+                        </tr>
+                        <tr class="even:bg-blue-50 odd:bg-white hover:bg-blue-100 transition-colors duration-200">
+                            <td class="py-3 px-4 border border-blue-200">Thursday</td>
+                            <td class="py-3 px-4 border border-blue-200">Row 4</td>
+                            <td class="py-3 px-4 border border-blue-200">Row 4</td>
+                            <td class="py-3 px-4 border border-blue-200">Row 4</td>
+                            <td class="py-3 px-4 border border-blue-200">Row 4</td>
+                        </tr>
+                        <tr class="even:bg-blue-50 odd:bg-white hover:bg-blue-100 transition-colors duration-200">
+                            <td class="py-3 px-4 border border-blue-200">Friday</td>
+                            <td class="py-3 px-4 border border-blue-200">Everyone</td>
+                            <td class="py-3 px-4 border border-blue-200">Everyone</td>
+                            <td class="py-3 px-4 border border-blue-200">Everyone</td>
+                            <td class="py-3 px-4 border border-blue-200">Everyone</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about-content" class="content-section hidden flex-col max-w-7xl mx-auto my-12 p-8 bg-white rounded-xl shadow-2xl">
+            <h2 class="text-4xl font-bold text-center mb-10 text-blue-700">About Our Class</h2>
+            <p class="text-lg leading-relaxed mb-6 text-gray-700">11 - Masunurin is a vibrant and enthusiastic class at Liqao National High School. We believe in mutual respect, active participation, and striving for academic excellence. This platform is a testament to our commitment to a well-organized and collaborative learning environment.</p>
+            <div class="text-center mb-8 text-2xl font-semibold text-gray-700">
                 <p>Our dedicated Class Adviser:</p>
-                <h3>Ms. Kristel P. Pied</h3>
-            </div>
+                <h3 class="text-3xl font-bold text-blue-700 mt-2">Ms. Kristel P. Pied</h3>
             
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 11 - Masunurin Class. All rights reserved.</p>
+    <!-- Footer section -->
+    <footer class="bg-blue-700 text-white text-center py-6 mt-auto shadow-inner-lg">
+        <p class="text-lg">&copy; 2025 11 - Masunurin Class. All rights reserved.</p>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Select relevant DOM elements
             const burger = document.querySelector('.burger');
-            const nav = document.querySelector('.nav-links');
-            const navLinks = document.querySelectorAll('.nav-links li a');
+            const navMobile = document.querySelector('.nav-links-mobile');
+            const navDesktopLinks = document.querySelectorAll('.nav-links li a');
+            const navMobileLinks = document.querySelectorAll('.nav-links-mobile li a');
             const contentSections = document.querySelectorAll('main section');
 
+            /**
+             * Handles the display of the correct content section and active navigation link.
+             * @param {string} sectionId - The ID of the section to display.
+             */
             const showSection = (sectionId) => {
+                // Hide all content sections
                 contentSections.forEach(section => {
                     section.classList.remove('active-section');
+                    section.classList.add('hidden'); // Ensure Tailwind's 'hidden' class is applied
                 });
-                document.getElementById(sectionId).classList.add('active-section');
+                // Show the target section and apply fade-in animation
+                const targetSection = document.getElementById(sectionId);
+                if (targetSection) {
+                    targetSection.classList.remove('hidden');
+                    targetSection.classList.add('active-section', 'flex'); // Re-add flex display
+                    targetSection.style.animation = 'fadeIn 1s ease-out'; // Re-apply animation on switch
+                }
 
-                navLinks.forEach(link => {
+                // Remove active class from all desktop navigation links
+                navDesktopLinks.forEach(link => {
                     link.classList.remove('active');
                 });
-                document.querySelector(`[data-section="${sectionId}"]`).classList.add('active');
+                // Add active class to the corresponding desktop navigation link
+                const activeDesktopLink = document.querySelector(`.nav-links li a[data-section="${sectionId}"]`);
+                if (activeDesktopLink) {
+                    activeDesktopLink.classList.add('active');
+                }
+
+                // Remove active class from all mobile navigation links
+                navMobileLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+                // Add active class to the corresponding mobile navigation link
+                const activeMobileLink = document.querySelector(`.nav-links-mobile li a[data-section="${sectionId}"]`);
+                if (activeMobileLink) {
+                    activeMobileLink.classList.add('active');
+                }
             };
 
+            // Event listener for the burger menu icon (mobile toggle)
             burger.addEventListener('click', () => {
-                nav.classList.toggle('nav-active');
+                // Toggle the 'nav-active' class to show/hide the mobile navigation menu
+                navMobile.classList.toggle('translate-x-full'); // Tailwind way to toggle visibility
+                navMobile.classList.toggle('translate-x-0');
 
-                navLinks.forEach((link, index) => {
-                    if (link.style.animation) {
-                        link.style.animation = '';
-                    } else {
+                // Animate navigation links individually for a staggered effect
+                navMobileLinks.forEach((link, index) => {
+                    if (navMobile.classList.contains('translate-x-0')) {
+                        // Apply animation if menu is active
                         link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                    } else {
+                        // Remove animation if menu is closing
+                        link.style.animation = '';
                     }
                 });
 
+                // Toggle the burger icon's animation (X effect)
                 burger.classList.toggle('toggle');
+                burger.querySelector('.line1').classList.toggle('rotate-[-45deg]');
+                burger.querySelector('.line1').classList.toggle('translate-x-[-5px]');
+                burger.querySelector('.line1').classList.toggle('translate-y-[6px]');
+
+                burger.querySelector('.line2').classList.toggle('opacity-0');
+
+                burger.querySelector('.line3').classList.toggle('rotate-[45deg]');
+                burger.querySelector('.line3').classList.toggle('translate-x-[-5px]');
+                burger.querySelector('.line3').classList.toggle('translate-y-[-6px]');
             });
 
-            const styleSheet = document.createElement('style');
-            styleSheet.type = 'text/css';
-            styleSheet.innerText = `
-                @keyframes navLinkFade {
-                    from {
-                        opacity: 0;
-                        transform: translateX(50px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateX(0px);
-                    }
-                }
-            `;
-            document.head.appendChild(styleSheet);
-
-            navLinks.forEach(link => {
+            // Add event listeners to desktop navigation links
+            navDesktopLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const targetSectionId = link.dataset.section;
-                    showSection(targetSectionId);
-
-                    if (nav.classList.contains('nav-active')) {
-                        nav.classList.remove('nav-active');
-                        burger.classList.remove('toggle');
-                        navLinks.forEach(item => {
-                            item.style.animation = '';
-                        });
-                    }
+                    e.preventDefault(); // Prevent default anchor link behavior
+                    const targetSectionId = link.dataset.section; // Get the target section ID from data-section attribute
+                    showSection(targetSectionId); // Show the corresponding section
                 });
             });
 
+            // Add event listeners to mobile navigation links
+            navMobileLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault(); // Prevent default anchor link behavior
+                    const targetSectionId = link.dataset.section; // Get the target section ID from data-section attribute
+                    showSection(targetSectionId); // Show the corresponding section
+
+                    // Close the mobile menu after clicking a link
+                    navMobile.classList.remove('translate-x-0');
+                    navMobile.classList.add('translate-x-full');
+                    burger.classList.remove('toggle');
+                    // Reset burger animation
+                    burger.querySelector('.line1').classList.remove('rotate-[-45deg]', 'translate-x-[-5px]', 'translate-y-[6px]');
+                    burger.querySelector('.line2').classList.remove('opacity-0');
+                    burger.querySelector('.line3').classList.remove('rotate-[45deg]', 'translate-x-[-5px]', 'translate-y-[-6px]');
+                    // Reset mobile nav link animation
+                    navMobileLinks.forEach(item => {
+                        item.style.animation = '';
+                    });
+                });
+            });
+
+            // Initialize by showing the home section on page load
             showSection('home-content');
         });
     </script>
